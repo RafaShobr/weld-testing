@@ -1,9 +1,6 @@
 package org.jboss.weld.junit5.mocking3;
 
 import org.easymock.EasyMock;
-import org.jboss.weld.environment.se.Weld;
-import org.jboss.weld.junit5.WeldInitiator;
-import org.jboss.weld.junit5.WeldSetup;
 import org.jboss.weld.junit5.auto.ExcludeBean;
 import org.jboss.weld.junit5.auto.WeldJunit5AutoExtension;
 import org.junit.jupiter.api.Test;
@@ -24,16 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(WeldJunit5AutoExtension.class)
 class MockNotInjectedTest {
 
-    /**
-     * unit test fails, mock is not injected but the real bean
-     */
-    @WeldSetup
-    public WeldInitiator weld = WeldInitiator.from(
-                    new Weld("unmanaged").enableDiscovery()
-                            .addBeanClasses(TableController.class, InternalController.class,
-                                    ControllerUtil.class, DefaultCodeResource.class)
-            )
-            .build();
     @Produces
     @ExcludeBean
     private DefaultCodeResource codeResource = EasyMock.createMock(DefaultCodeResource.class);

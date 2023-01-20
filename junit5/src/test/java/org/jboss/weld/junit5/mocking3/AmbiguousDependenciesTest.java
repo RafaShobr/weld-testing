@@ -1,8 +1,6 @@
 package org.jboss.weld.junit5.mocking3;
 
 import org.easymock.EasyMock;
-import org.jboss.weld.junit5.WeldInitiator;
-import org.jboss.weld.junit5.WeldSetup;
 import org.jboss.weld.junit5.auto.ExcludeBean;
 import org.jboss.weld.junit5.auto.WeldJunit5AutoExtension;
 import org.junit.jupiter.api.Test;
@@ -22,12 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @ExtendWith(WeldJunit5AutoExtension.class)
 class AmbiguousDependenciesTest {
-
-    /**
-     * fails with "Ambiguous dependencies for type DefaultCodeResource"
-     */
-    @WeldSetup
-    public WeldInitiator weld = WeldInitiator.ofTestPackage();
 
     @Produces
     @ExcludeBean
